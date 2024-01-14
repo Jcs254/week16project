@@ -6,16 +6,16 @@ pipeline {
     stages{
         stage('sonarqube scan') {
             steps{
-                withsonarQubeEnv('sonarserver'){               
+                wwithSonarQubeEnv('sonarserver'){               
                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Jcs254_week16project'
                 }
             }
+        }
         stage('maven commands') {
             steps{
                 sh 'mvn clean compile test install package'
             }
         }
         
-      
     }
-}
+ }
